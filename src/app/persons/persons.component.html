@@ -1,9 +1,19 @@
 <div class="container">
   <div class="row">
+
     <div class="col">
       <h1>Persons list</h1>
+
+      <button class="btn btn-primary" [disabled]="disabled" (click)="addPerson()">Add Person</button>
+
+      <p>{{message}}</p>
+
       <app-person></app-person>
-      <app-person></app-person>
+
+      <label>Person title</label>
+      <input type="text" class="form-control" (input)="changeTitle($event)">
+      {{ title }}
     </div>
+
   </div>
 </div>
