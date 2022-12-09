@@ -13,9 +13,4 @@ export class PersonsComponent{
     addPerson(){
         this.message = "Person was added";
     }
-
-    changeTitle(event: Event){
-        console.log("changeTitle triggered");
-        this.title = (<HTMLInputElement> event.target).value;
-    }
 }
