@@ -6,7 +6,11 @@
 
       <button class="btn btn-primary" [disabled]="disabled" (click)="addPerson()">Add Person</button>
 
-      <p>{{message}}</p>
+      <p *ngIf="show; else noPerson" >{{message}} with tittle {{title}}</p>
+
+      <ng-template #noPerson> 
+        <p>No person was added</p>
+      </ng-template>
 
       <app-person></app-person>
 

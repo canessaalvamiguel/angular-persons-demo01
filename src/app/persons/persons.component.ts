@@ -6,11 +6,13 @@ import { Component } from "@angular/core";
     styleUrls: ['./persons.component.css']
 })
 export class PersonsComponent{
-    disabled = true;
-    message = "No person was added";
+    disabled = false;
+    message = "";
     title = "";
+    show = false;
 
     addPerson(){
+        this.show = true;
         this.message = "Person was added";
     }
 }
