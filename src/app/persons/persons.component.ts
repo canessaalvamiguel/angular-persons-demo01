@@ -7,14 +7,20 @@ import { Person } from "../Person.model";
     styleUrls: ['./persons.component.css']
 })
 export class PersonsComponent{
-    disabled = false;
-    message = "";
+    message = "Persons added";
     show = false;
+    title = "Persons list"
 
-    persons: Person[] = [new Person('Juan', 'Perez'), new Person('Laura', 'Alvarado'), new Person('Jose', 'Rodriguez')];
+    persons: Person[] = [];
+    nameInput: string = "";
+    lastNameInput: string = "";
 
     addPerson(){
         this.show = true;
         this.message = "Person was added";
+        let person1 = new Person(this.nameInput, this.lastNameInput);
+        this.persons.push(person1);
+        this.nameInput = "";
+        this.lastNameInput = "";
     }
 }
