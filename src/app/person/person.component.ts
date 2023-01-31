@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Person } from '../Person.model';
 
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+  styleUrls: ['./person.component.css'],
 })
 export class PersonComponent {
+  @Input() person: Person;
+  @Input() index: number;
 
-  name: string = 'Miguel';
-  lastName: string = 'Canessa';
-  age: number = 30;
+  constructor() {}
 
-
+  ngOnInit() {}
 }
