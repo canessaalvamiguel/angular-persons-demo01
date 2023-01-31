@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import { PersonsComponent } from './persons/persons.component';
 import { PersonComponent } from './person/person.component';
 import { FormsModule } from '@angular/forms';
+import { FormPersonComponent } from './form-person/form-person.component';
 
 @NgModule({
   declarations: [
-    AppComponent, PersonsComponent, PersonComponent
+    AppComponent, PersonsComponent, PersonComponent, FormPersonComponent
   ],
   imports: [
     BrowserModule,

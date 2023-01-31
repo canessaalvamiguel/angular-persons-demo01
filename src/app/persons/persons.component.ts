@@ -10,15 +10,9 @@ export class PersonsComponent{
     message = "There is data";
     title = "Persons list"
 
-    persons: Person[] = [new Person("Jose", "Perez"), new Person("Miguel", "Canessa")];
-    nameInput: string = "";
-    lastNameInput: string = "";
+    persons: Person[] = [];
 
-    addPerson(){
-        this.message = "Person was added";
-        let person1 = new Person(this.nameInput, this.lastNameInput);
-        this.persons.push(person1);
-        this.nameInput = "";
-        this.lastNameInput = "";
+    personAdded(person: Person){
+        this.persons.push(person);
     }
 }

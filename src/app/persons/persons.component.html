@@ -3,41 +3,14 @@
     <h3>{{ title }}</h3>
   </div>
   <hr />
-  <form class="form-row">
-    <div class="form-group col-md-2">
-      <label for="name" class="sr-only">Name</label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        placeholder="Name"
-        class="form-control"
-        [(ngModel)]="nameInput"
-      />
-    </div>
-    <div class="form-group col-md-2">
-      <label for="lastName" class="sr-only">Last name</label>
-      <input
-        type="text"
-        name="lastName"
-        id="lastName"
-        placeholder="lastName"
-        class="form-control"
-        [(ngModel)]="lastNameInput"
-      />
-    </div>
-    <div class="col">
-      <button type="submit" class="btn btn-primary" (click)="addPerson()">
-        Add Person
-      </button>
-    </div>
-  </form>
 
-  <p *ngIf="persons.length > 0 else noPerson">{{ message }}</p>
+  <app-form-person (newPerson)="personAdded($event)"></app-form-person>
 
-      <ng-template #noPerson>
-        <p>No person was added</p>
-      </ng-template>
+  <p *ngIf="persons.length > 0; else noPerson">{{ message }}</p>
+
+  <ng-template #noPerson>
+    <p>No person was added</p>
+  </ng-template>
 
   <hr />
   <app-person
