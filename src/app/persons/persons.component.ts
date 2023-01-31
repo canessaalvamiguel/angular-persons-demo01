@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Person } from "../Person.model";
 
 @Component({
     selector: 'app-persons',
@@ -8,8 +9,9 @@ import { Component } from "@angular/core";
 export class PersonsComponent{
     disabled = false;
     message = "";
-    title = "";
     show = false;
+
+    persons: Person[] = [new Person('Juan', 'Perez'), new Person('Laura', 'Alvarado'), new Person('Jose', 'Rodriguez')];
 
     addPerson(){
         this.show = true;

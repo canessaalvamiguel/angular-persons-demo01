@@ -6,17 +6,15 @@
 
       <button class="btn btn-primary" [disabled]="disabled" (click)="addPerson()">Add Person</button>
 
-      <p *ngIf="show; else noPerson" >{{message}} with tittle {{title}}</p>
+      <p *ngIf="show; else noPerson" >{{message}}</p>
 
       <ng-template #noPerson> 
         <p>No person was added</p>
       </ng-template>
 
-      <app-person></app-person>
-
-      <label>Person title</label>
-      <input type="text" class="form-control" [(ngModel)]="title">
-      {{ title }}
+      <div *ngFor="let person of persons; let i = index">
+        {{i + 1}} {{person.name}} {{person.lastName}}
+      </div>
     </div>
 
   </div>
