@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { LoggingService } from "../LoggingService.service";
 import { Person } from "../Person.model";
 import { PersonsService } from "../persons.service";
 
@@ -14,7 +13,7 @@ export class PersonsComponent implements OnInit{
 
     persons: Person[] = [];
 
-    constructor(private loggingService : LoggingService, private personsService: PersonsService){}
+    constructor(private personsService: PersonsService){}
 
     //Method is executed after the constructor
     ngOnInit(): void {
