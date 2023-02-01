@@ -13,9 +13,13 @@ export class FormPersonComponent {
   @ViewChild('lastNameInput') lastNameInput: ElementRef;
 
   constructor(private personsService: PersonsService) {
-    this.personsService.saludate.subscribe((index: number) =>
-      alert('Index ' + index)
-    );
+    this.personsService.saludate.subscribe((index: number) => {
+      //alert('Index ' + index);
+      this.personsService.editPerson(
+        index,
+        new Person('Pepe', 'Peña')
+      );
+    });
   }
 
   addPerson() {

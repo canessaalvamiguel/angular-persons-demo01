@@ -11,10 +11,16 @@ export class PersonsService {
 
   saludate = new EventEmitter<number>();
 
-  constructor(private loggingService : LoggingService){}
+  constructor(private loggingService: LoggingService) {}
 
-  addPerson(person: Person){
+  addPerson(person: Person) {
     this.persons.push(person);
-    this.loggingService.sendMessageConsole("Person was added : " + person.name + " " + person.lastName);
-}
+    this.loggingService.sendMessageConsole(
+      'Person was added : ' + person.name + ' ' + person.lastName
+    );
+  }
+
+  editPerson(index: number, newPerson: Person){
+    this.persons[index] = newPerson;
+  }
 }
