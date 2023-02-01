@@ -9,15 +9,12 @@ import { Person } from '../Person.model';
 export class FormPersonComponent {
   @Output() newPerson = new EventEmitter<Person>();
 
-  nameInput: string = '';
-  lastNameInput: string = '';
 
-  addPerson() {
-    let person1 = new Person(this.nameInput, this.lastNameInput);
+  addPerson(nameInput: HTMLInputElement, lastNameInput: HTMLInputElement) {
+    let person1 = new Person(nameInput.value, lastNameInput.value);
+    nameInput.value = '';
+    lastNameInput.value = '';
 
     this.newPerson.emit(person1);
-
-    this.nameInput = '';
-    this.lastNameInput = '';
   }
 }
