@@ -6,17 +6,23 @@ import { PersonsService } from '../persons.service';
   selector: 'app-form-person',
   templateUrl: './form-person.component.html',
   styleUrls: ['./form-person.component.css'],
-  providers: []
+  providers: [],
 })
 export class FormPersonComponent {
+  @ViewChild('nameInput') nameInput: ElementRef;
+  @ViewChild('lastNameInput') lastNameInput: ElementRef;
 
-  @ViewChild('nameInput') nameInput : ElementRef;
-  @ViewChild('lastNameInput') lastNameInput : ElementRef;
-
-  constructor(private personsService : PersonsService){}
+  constructor(private personsService: PersonsService) {
+    this.personsService.saludate.subscribe((index: number) =>
+      alert('Index ' + index)
+    );
+  }
 
   addPerson() {
-    let person1 = new Person(this.nameInput.nativeElement.value, this.lastNameInput.nativeElement.value);
+    let person1 = new Person(
+      this.nameInput.nativeElement.value,
+      this.lastNameInput.nativeElement.value
+    );
 
     this.nameInput.nativeElement.value = '';
     this.lastNameInput.nativeElement.value = '';

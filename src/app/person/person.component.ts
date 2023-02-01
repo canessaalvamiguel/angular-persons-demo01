@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Person } from '../Person.model';
+import { PersonsService } from '../persons.service';
 
 @Component({
   selector: 'app-person',
@@ -10,7 +11,11 @@ export class PersonComponent {
   @Input() person: Person;
   @Input() index: number;
 
-  constructor() {}
+  constructor(private personasService: PersonsService) {}
 
   ngOnInit() {}
+
+  edit(){
+    this.personasService.saludate.emit(this.index);
+  }
 }
