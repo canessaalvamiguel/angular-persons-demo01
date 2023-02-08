@@ -9,27 +9,28 @@ import { PersonsService } from '../persons.service';
   providers: [],
 })
 export class FormPersonComponent {
-  @ViewChild('nameInput') nameInput: ElementRef;
-  @ViewChild('lastNameInput') lastNameInput: ElementRef;
+
+  nameInput : string;
+  lastNameInput : string;
 
   constructor(private personsService: PersonsService) {
     this.personsService.saludate.subscribe((index: number) => {
-      //alert('Index ' + index);
-      this.personsService.editPerson(
+      alert('Index ' + index);
+      /*this.personsService.editPerson(
         index,
         new Person('Pepe', 'Peña')
-      );
+      );*/
     });
   }
 
   addPerson() {
     let person1 = new Person(
-      this.nameInput.nativeElement.value,
-      this.lastNameInput.nativeElement.value
+      this.nameInput,
+      this.lastNameInput
     );
 
-    this.nameInput.nativeElement.value = '';
-    this.lastNameInput.nativeElement.value = '';
+    this.nameInput = '';
+    this.lastNameInput = '';
 
     this.personsService.addPerson(person1);
   }

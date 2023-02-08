@@ -1,21 +1,21 @@
-<div class="container">
-  <div class="col">
-    <h3>{{ title }}</h3>
-  </div>
-  <hr />
+<div class="box" id="heading">
+  <h1>{{ title }}</h1>
+</div>
 
-  <app-form-person></app-form-person>
+<div class="box">
+  <app-person
+    *ngFor="let personElement of persons; let i = index"
+    [person]="personElement"
+    [index]="i"
+  ></app-person>
 
   <p *ngIf="persons.length > 0; else noPerson">{{ message }}</p>
 
   <ng-template #noPerson>
     <p>No person was added</p>
   </ng-template>
-
-  <hr />
-  <app-person
-    *ngFor="let personElement of persons; let i = index"
-    [person]="personElement"
-    [index]="i"
-  ></app-person>
 </div>
+
+<div class="box"><app-form-person></app-form-person></div>
+
+<hr />
