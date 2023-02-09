@@ -52,4 +52,11 @@ export class FormPersonComponent implements OnInit{
 
     this.router.navigate(['persons']);
   }
+
+  deletePerson(){
+    if(this.index){
+      this.personsService.deletePerson(this.index);
+    }
+    this.router.navigate(['persons']);
+  }
 }

@@ -28,4 +28,8 @@ export class PersonsService {
     let person : Person = this.persons[index];
     return person;
   }
+
+  deletePerson(index: number){
+    this.persons.splice(index, 1);
+  }
 }
