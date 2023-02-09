@@ -1,19 +1,25 @@
-<form class="item">
-  <input
-    type="text"
-    name="name"
-    id="name"
-    placeholder="Name"
-    [(ngModel)]="nameInput"
-  />
+<div class="box">
+  <form class="item" #f="ngForm" (ngSubmit)="f.form.valid && savePerson()">
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Name"
+      required=""
+      [(ngModel)]="nameInput"
+    />
 
-  <input
-    type="text"
-    name="lastName"
-    id="lastName"
-    placeholder="Last Name"
-    [(ngModel)]="lastNameInput"
-  />
+    <input
+      type="text"
+      name="lastName"
+      id="lastName"
+      placeholder="Last Name"
+      required=""
+      [(ngModel)]="lastNameInput"
+    />
 
-  <button type="submit" class="btn btn-primary" (click)="addPerson()">+</button>
-</form>
+    <button type="submit" class="btn btn-primary" style="cursor: pointer">
+      +
+    </button>
+  </form>
+</div>

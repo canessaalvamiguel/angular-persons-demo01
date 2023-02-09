@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Person } from '../../Person.model';
 import { PersonsService } from '../../persons.service';
 
@@ -13,9 +14,9 @@ export class FormPersonComponent {
   nameInput : string;
   lastNameInput : string;
 
-  constructor(private personsService: PersonsService) {
+  constructor(private personsService: PersonsService, private router: Router) {
     this.personsService.saludate.subscribe((index: number) => {
-      alert('Index ' + index);
+      
       /*this.personsService.editPerson(
         index,
         new Person('Pepe', 'Peña')
@@ -23,7 +24,7 @@ export class FormPersonComponent {
     });
   }
 
-  addPerson() {
+  savePerson() {
     let person1 = new Person(
       this.nameInput,
       this.lastNameInput
@@ -33,5 +34,6 @@ export class FormPersonComponent {
     this.lastNameInput = '';
 
     this.personsService.addPerson(person1);
+    this.router.navigate(['persons']);
   }
 }
