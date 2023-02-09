@@ -13,7 +13,8 @@ const routes: Routes = [
       { path: 'add', component: FormPersonComponent },
       { path: ':id', component: FormPersonComponent },
     ],
-  }
+  },
+  {path: '**', component: ErrorComponent}
 ];
 
 @NgModule({

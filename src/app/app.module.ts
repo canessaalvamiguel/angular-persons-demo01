@@ -9,10 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { FormPersonComponent } from './persons/form-person/form-person.component';
 import { LoggingService } from './LoggingService.service';
 import { PersonsService } from './persons.service';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
-    AppComponent, PersonsComponent, PersonComponent, FormPersonComponent
+    AppComponent, PersonsComponent, PersonComponent, FormPersonComponent, ErrorComponent
   ],
   imports: [
     BrowserModule,
