@@ -9,7 +9,6 @@ import { PersonsService } from "../persons.service";
 })
 export class PersonsComponent implements OnInit{
     message = "There is data";
-    title = "Persons list"
 
     persons: Person[] = [];
 
