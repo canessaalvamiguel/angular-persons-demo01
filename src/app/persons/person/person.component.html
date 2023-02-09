@@ -1,4 +1,9 @@
 <div class="item">
-  <input type="checkbox" (click)="edit()" />
-  <p>{{ index + 1 }} {{ person.name }} {{ person.lastName }}</p>
+  <ul>
+    <li>
+      <a [routerLink]="['/persons', index]">
+        {{ person.name }} {{ person.lastName }}
+      </a>
+    </li>
+  </ul>
 </div>

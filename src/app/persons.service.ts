@@ -23,4 +23,9 @@ export class PersonsService {
   editPerson(index: number, newPerson: Person){
     this.persons[index] = newPerson;
   }
+
+  getPerson(index: number){
+    let person : Person = this.persons[index];
+    return person;
+  }
 }

@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Person } from '../../Person.model';
 import { PersonsService } from '../../persons.service';
 
@@ -9,31 +9,47 @@ import { PersonsService } from '../../persons.service';
   styleUrls: ['./form-person.component.css'],
   providers: [],
 })
-export class FormPersonComponent {
+export class FormPersonComponent implements OnInit{
+  nameInput: string;
+  lastNameInput: string;
+  index: number;
 
-  nameInput : string;
-  lastNameInput : string;
-
-  constructor(private personsService: PersonsService, private router: Router) {
-    this.personsService.saludate.subscribe((index: number) => {
-      
-      /*this.personsService.editPerson(
+  constructor(
+    private personsService: PersonsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    /*
+    this.personsService.saludate.subscribe((index: number) => {      
+      this.personsService.editPerson(
         index,
         new Person('Pepe', 'Peña')
-      );*/
+      );
     });
+    */
+  }
+
+  ngOnInit(){
+    this.index = this.route.snapshot.params['id'];
+    if(this.index != null){
+      let person: Person = this.personsService.getPerson(this.index);
+      this.nameInput = person.name;
+      this.lastNameInput = person.lastName;
+    }
   }
 
   savePerson() {
-    let person1 = new Person(
-      this.nameInput,
-      this.lastNameInput
-    );
+    let person1 = new Person(this.nameInput, this.lastNameInput);
 
     this.nameInput = '';
     this.lastNameInput = '';
 
-    this.personsService.addPerson(person1);
+    if(this.index){
+      this.personsService.editPerson(this.index, person1);
+    }else{
+      this.personsService.addPerson(person1);
+    }
+
     this.router.navigate(['persons']);
   }
 }
