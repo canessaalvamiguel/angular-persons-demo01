@@ -36,4 +36,15 @@ export class DataServices {
       (error) => console.log('Error while updating persons: ' + error)
     );
   }
+
+  deletePerson(index: number) {
+    let url: string =
+      'https://angularapp-persons-list-default-rtdb.firebaseio.com/data/' +
+      index +
+      '.json';
+    this.httpClient.delete(url).subscribe(
+      (response) => console.log('Result of deleting Person ' + response),
+      (error) => console.log('Error while deleting persons: ' + error)
+    );
+  }
 }
