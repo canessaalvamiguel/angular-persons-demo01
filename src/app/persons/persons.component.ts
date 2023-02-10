@@ -1,26 +1,29 @@
-import { Component, OnInit } from "@angular/core";
-import { Person } from "../Person.model";
-import { PersonsService } from "../persons.service";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Person } from '../Person.model';
+import { PersonsService } from '../persons.service';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-persons',
-    templateUrl: './persons.component.html',
-    styleUrls: ['./persons.component.css']
+  selector: 'app-persons',
+  templateUrl: './persons.component.html',
+  styleUrls: ['./persons.component.css'],
 })
-export class PersonsComponent implements OnInit{
-    message = "There is data";
+export class PersonsComponent implements OnInit {
+  message = 'There is data';
 
-    persons: Person[] = [];
+  persons: Person[] = [];
 
-    constructor(private personsService: PersonsService, private router: Router){}
+  constructor(private personsService: PersonsService, private router: Router) {}
 
-    //Method is executed after the constructor
-    ngOnInit(): void {
-        this.persons = this.personsService.persons;//Assigning reference in memory
-    }
+  //Method is executed after the constructor
+  ngOnInit(): void {
+    this.personsService.getPersons().subscribe((persons: Person[]) => {
+      this.persons = persons;
+      this.personsService.setPersons(persons);
+    });
+  }
 
-    add(){
-        this.router.navigate(['persons/add']);
-    }
+  add() {
+    this.router.navigate(['persons/add']);
+  }
 }
