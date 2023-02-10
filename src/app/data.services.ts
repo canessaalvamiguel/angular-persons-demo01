@@ -6,8 +6,10 @@ import { Person } from './Person.model';
 export class DataServices {
   constructor(private httpClient: HttpClient) {}
 
-  loadPersons(){
-    return this.httpClient.get<Person[]>('https://angularapp-persons-list-default-rtdb.firebaseio.com/data.json');
+  loadPersons() {
+    return this.httpClient.get<Person[]>(
+      'https://angularapp-persons-list-default-rtdb.firebaseio.com/data.json'
+    );
   }
 
   savePerson(persons: Person[]) {
@@ -22,5 +24,16 @@ export class DataServices {
         },
         (error) => console.log('Error while saving persons: ' + error)
       );
+  }
+
+  updatePerson(index: number, person: Person) {
+    let url: string =
+      'https://angularapp-persons-list-default-rtdb.firebaseio.com/data/' +
+      index +
+      '.json';
+    this.httpClient.put(url, person).subscribe(
+      (response) => console.log('Result of updating Person ' + response),
+      (error) => console.log('Error while updating persons: ' + error)
+    );
   }
 }

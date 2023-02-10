@@ -35,6 +35,10 @@ export class PersonsService {
 
   editPerson(index: number, newPerson: Person) {
     this.persons[index] = newPerson;
+    this.dataService.updatePerson(index, newPerson);
+    this.loggingService.sendMessageConsole(
+      'Person was updated : ' + newPerson.name + ' ' + newPerson.lastName
+    );
   }
 
   getPerson(index: number) {
